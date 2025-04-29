@@ -1,3 +1,11 @@
 from django.db import models
 
-# Create your models here.
+class Mobile(models.Model):
+    name = models.CharField(max_length=50)
+    brand = models.CharField(max_length=50)
+    price = models.PositiveIntegerField()
+
+class Laptop(models.Model):
+    name = models.CharField(max_length=50)
+    brand = models.CharField(max_length=50)
+    price = models.PositiveIntegerField()

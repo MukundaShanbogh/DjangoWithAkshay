@@ -18,6 +18,10 @@
         th {
             background-color: #f4f4f4;
         }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -29,6 +33,7 @@
                 <th>Brand</th>
                 <th>Name</th>
                 <th>Price ($)</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -37,6 +42,9 @@
                     <td>{{ laptop.brand }}</td>
                     <td>{{ laptop.name }}</td>
                     <td>${{ laptop.price }}</td>
+                    <td>
+                        <a href="{% url 'update_laptop' %}?id={{ laptop.id }}">Update</a>
+                    </td>
                 </tr>
             {% empty %}
                 <tr>
@@ -45,6 +53,10 @@
             {% endfor %}
         </tbody>
     </table>
-
+    <div class="button-container">
+        <a href="{% url 'add_new_laptop' %}">
+            <button type="button">Add New Laptop</button>
+        </a>
+    </div>
 </body>
 </html>

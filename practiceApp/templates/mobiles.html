@@ -9,26 +9,32 @@
             width: 60%;
             margin: 20px auto;
             border-collapse: collapse;
+            border: 2px solid #333; /* Main border for table */
         }
         th, td {
-            border: 1px solid #ddd;
+            border: 1px solid #555; /* Borders inside the table */
             padding: 10px;
             text-align: center;
         }
         th {
             background-color: #f4f4f4;
         }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <h1 style="text-align: center;">Available Mobiles</h1>
-    
+
     <table>
         <thead>
             <tr>
                 <th>Brand</th>
                 <th>Name</th>
                 <th>Price ($)</th>
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
@@ -37,6 +43,9 @@
                     <td>{{ mobile.brand }}</td>
                     <td>{{ mobile.name }}</td>
                     <td>${{ mobile.price }}</td>
+                    <td>
+                        <a href="{% url 'update_mobile' %}?id={{ mobile.id }}">Update</a>
+                    </td>
                 </tr>
             {% empty %}
                 <tr>
@@ -46,5 +55,11 @@
         </tbody>
     </table>
 
+    <div class="button-container">
+        <a href="{% url 'add_new_mobile' %}">
+            <button type="button">Add New Mobile</button>
+        </a>
+    </div>
+    <br>
 </body>
 </html>

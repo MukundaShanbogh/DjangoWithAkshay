@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>update_laptop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f9f9f9;
+        }
+        .form-container {
+            width: 400px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #357ae8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Update Laptop</h2>
+    <form method="POST" action="{% url 'update_laptop' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="laptop_id">id</label>
+            <input type="text" id="laptop_id" name="laptop_id" value="{{ laptop.id }}" required readonly >
+        </div>
+        <div class="form-group">
+            <label for="brand">Brand</label>
+            <input type="text" id="brand" name="brand" required placeholder="{{laptop.brand}}">
+        </div>
+        
+        <div class="form-group">
+            <label for="model">Model</label>
+            <input type="text" id="model" name="model" required placeholder="{{laptop.name}}">
+        </div>
+        
+        <div class="form-group">
+            <label for="price">Price ($)</label>
+            <input type="number" id="price" name="price" required placeholder="{{laptop.price}}">
+        </div>
+        <div class="button-container">
+                <button type="submit">Update</button>
+        </div>    
+    </form>
+</div>
+</body>
+</html>
